@@ -1,4 +1,6 @@
-from mainMenu import mainOptions
+from mainMenu import waitingWakeUp
+from settings import loadSettings
 
+loadSettings()
 
-mainOptions()
+waitingWakeUp()

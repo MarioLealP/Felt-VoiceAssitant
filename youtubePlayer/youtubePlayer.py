@@ -1,6 +1,6 @@
 import webbrowser
 from speechRecognition import speechToText
-from youtubeVideoSearch import search_youtube_api  # Assuming this is a module containing the modified search_youtube function
+from youtubePlayer.youtubeVideoSearch import search_youtube_api  # Assuming this is a module containing the modified search_youtube function
 from apiKeys import youtubeAPI
 
 def playMusic():
