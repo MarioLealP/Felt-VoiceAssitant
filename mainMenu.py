@@ -1,18 +1,21 @@
 import sys
 sys.path.append("extraRepos")
 from speechRecognition import speechToText
-from youtubePlayer.youtubePlayer import playMusic
-from textToSpeech import speakToMe
-from settings import Name
+from youtubePlayer.youtubePlayer import playYTBMusic
+#from textToSpeech import speakToMe
+import settings
 from commands import commands
 
 def waitingWakeUp():
-    wakeUpCall = speechToText()
+    name = settings.name
+    print("Waiting for wake up call")
+    #wakeUpCall = speechToText()
+    wakeUpCall = "hey " + name + " play extras gg"
 
-    if(wakeUpCall.find(Name) == -1):
+    if(wakeUpCall.find(name) == -1):
         waitingWakeUp()
     
-    instruction = listenCommand(wakeUpCall)
+    instruction, key = listenCommand(wakeUpCall)
 
     attemptsAtListening = 0
     
@@ -24,8 +27,9 @@ def waitingWakeUp():
         if(attemptsAtListening == 3):
             waitingWakeUp()
 
+    context = wakeUpCall.split(key)[1]
     #instruction found goes to the menu to execute it
-    instructionMenu(instruction)
+    instructionMenu(instruction, context)
 
 
 
@@ -39,16 +43,16 @@ def listenCommand(phrase):
         for key in commands.keys():
             if word in commands.get(key):
                 instruction = key
-                return instruction #returns the instruction based on the command key
+                return instruction, key #returns the instruction based on the command key
 
     return "Not Found"
 
 
 
-def instructionMenu(instruction):
+def instructionMenu(instruction, context):
         match instruction:
             case 'play':
-                playMusic()
+                playYTBMusic(context)
 
             case _:
                 print("Command not found")

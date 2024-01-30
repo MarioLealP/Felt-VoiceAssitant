@@ -1,13 +1,14 @@
 import requests
+from apiKeys import youtubeAPI
 
-def search_youtube_api(query, api_key):
+def search_youtube_api(query):
     base_url = "https://www.googleapis.com/youtube/v3/search"
     
     params = {
         'part': 'snippet',
         'q': query,
         'type': 'video',
-        'key': api_key,
+        'key': youtubeAPI,
     }
 
     try:
