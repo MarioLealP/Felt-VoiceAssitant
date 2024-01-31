@@ -1,5 +1,4 @@
 import sys
-import time
 import re
 sys.path.append("extraRepos")
 from speechRecognition import speechToText
@@ -15,7 +14,7 @@ def waitingWakeUp():
     print(name)
     print("Waiting for wake up call")
     wakeUpCall = speechToText()
-    #wakeUpCall = "hey " + name + " whats the weather in Lisbon"
+    #wakeUpCall = "Felt, play GG extra"
 
 
     if(not re.search(name, wakeUpCall)):

@@ -1,7 +1,10 @@
 apiKeys.py
 docs/protocol.md
 tempFiles/audio/musicFile.mp4
-
+/Scripts
+/share
+/include
+/.vscode
 # Created by https://www.toptal.com/developers/gitignore/api/python,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,visualstudiocode
 

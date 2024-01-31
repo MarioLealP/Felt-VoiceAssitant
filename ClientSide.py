@@ -3,6 +3,8 @@ import settings
 import time
 from server.client.clientConnection import start_client
 from server.client.clientCommunication import sendMessage, receiveMessage
+from textToSpeech import textToSpeech
+
 
 def startUp():
 
@@ -14,13 +16,10 @@ def startUp():
     print("Current City is: " + settings.city)
     print("Current Country is: " + settings.country)
 
-    start_client()
-    sendMessage("Can you hear me?")
-    message = receiveMessage()
-    print(message)
+    textToSpeech("Hello, my name is " + settings.name)
 
+    #start_client()
     #waitingWakeUp()
-    time.sleep(60)
     #clientSocket.close()
 
 if __name__ == '__main__':
