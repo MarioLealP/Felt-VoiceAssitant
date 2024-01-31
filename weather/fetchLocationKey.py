@@ -9,11 +9,7 @@ def searchLocationKey(city_name):
     url = f'{base_url}?apikey={accuWeatherAPI}&q={city_name}'
 
     # Make the API request
-    #response = requests.get(url)
-    response = ""
-
-    #to save the API
-    return 0
+    response = requests.get(url)
 
     # Check if the request was successful (status code 200)
     if response.status_code == 200:

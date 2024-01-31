@@ -4,7 +4,7 @@ torchaudio --index-url https://download.pytorch.org/whl/cu121
 speechRecognition
 PyAudio
 pytube
-playsound==1.2.2
+pydub
 sudachipy
 pytz
 python-crfsuite

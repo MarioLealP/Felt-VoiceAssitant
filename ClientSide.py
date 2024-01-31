@@ -17,9 +17,11 @@ def startUp():
     print("Current Country is: " + settings.country)
 
     textToSpeech("Hello, my name is " + settings.name)
+    #message = "Current Conditions: Clear, Temperature: 13.9 C"
+    #textToSpeech(message)
 
     #start_client()
-    waitingWakeUp()
+    #waitingWakeUp()
     #clientSocket.close()
 
 if __name__ == '__main__':

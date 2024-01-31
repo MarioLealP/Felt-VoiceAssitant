@@ -1,6 +1,7 @@
 import requests
 from apiKeys import accuWeatherAPI
 from server.client.clientCommunication import sendMessage
+from textToSpeech import textToSpeech
 
 def fetchCurrentWeather(location_key):
 
@@ -10,19 +11,17 @@ def fetchCurrentWeather(location_key):
     url = f'{base_url}{location_key}?apikey={accuWeatherAPI}'
 
     # Make the API request
-    #response = requests.get(url)
-    response = ""
-
-    #to save the API
-    return 0
+    response = requests.get(url)
 
     # Check if the request was successful (status code 200)
     if response.status_code == 200:
         data = response.json()
         print("Current Conditions:", data[0]['WeatherText'])
         print("Temperature:", data[0]['Temperature']['Metric']['Value'], data[0]['Temperature']['Metric']['Unit'])
-        message = "Current Conditions:", data[0]['WeatherText'] + "\nTemperature:", data[0]['Temperature']['Metric']['Value'], data[0]['Temperature']['Metric']['Unit']
-        sendMessage(message)
+        message = "Current Conditions:", data[0]['WeatherText'] + "Temperature:", data[0]['Temperature']['Metric']['Value'], data[0]['Temperature']['Metric']['Unit']
+        #sendMessage(message)
+        textToSpeech(message)
+
     else:
         print("Error:", response.status_code)
 
@@ -34,11 +33,8 @@ def fetchWeatherForecast(location_key):
     url = f'{base_url}{location_key}?apikey={accuWeatherAPI}&metric=true'
 
     # Make the API request
-    #response = requests.get(url)
-    response = ""
-
-    #to save the API
-    return 0
+    response = requests.get(url)
+    #response = ""
 
     # Check if the request was successful (status code 200)
     if response.status_code == 200:
@@ -49,7 +45,10 @@ def fetchWeatherForecast(location_key):
         print("Day:", data['DailyForecasts'][0]['Day']['IconPhrase'])
         print("Night:", data['DailyForecasts'][0]['Night']['IconPhrase'])
 
-        message = "Weather Forecast:", data['Headline']['Text'] + "\nMinimum Temperature:", data['DailyForecasts'][0]['Temperature']['Minimum']['Value'], data['DailyForecasts'][0]['Temperature']['Minimum']['Unit'] + "\nMaximum Temperature:", data['DailyForecasts'][0]['Temperature']['Maximum']['Value'], data['DailyForecasts'][0]['Temperature']['Maximum']['Unit'] + "\nDay:", data['DailyForecasts'][0]['Day']['IconPhrase'] + "\nNight:", data['DailyForecasts'][0]['Night']['IconPhrase']
-        sendMessage(message)
+        message = "Weather Forecast:", data['Headline']['Text'] + "Minimum Temperature:", data['DailyForecasts'][0]['Temperature']['Minimum']['Value'], data['DailyForecasts'][0]['Temperature']['Minimum']['Unit'] + "\nMaximum Temperature:", data['DailyForecasts'][0]['Temperature']['Maximum']['Value'], data['DailyForecasts'][0]['Temperature']['Maximum']['Unit'] + "\nDay:", data['DailyForecasts'][0]['Day']['IconPhrase'] + "\nNight:", data['DailyForecasts'][0]['Night']['IconPhrase']
+        #sendMessage(message)
+        print("Message: ")
+        print(message)
+        textToSpeech(message)
     else:
         print("Error:", response.status_code)
