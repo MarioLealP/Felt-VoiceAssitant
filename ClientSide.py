@@ -19,7 +19,7 @@ def startUp():
     textToSpeech("Hello, my name is " + settings.name)
 
     #start_client()
-    #waitingWakeUp()
+    waitingWakeUp()
     #clientSocket.close()
 
 if __name__ == '__main__':

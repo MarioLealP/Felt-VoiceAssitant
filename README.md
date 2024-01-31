@@ -6,4 +6,6 @@ client.bat
 
 python -m pip install setuptools wheel pip -U
 
+git clone https://github.com/coqui-ai/TTS.git Include/TTS
+
 pip install -r requirements.txt

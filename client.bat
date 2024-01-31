@@ -1,2 +1,2 @@
 python -m venv .
-\Scripts\activate.bat
+Scripts\activate.bat
