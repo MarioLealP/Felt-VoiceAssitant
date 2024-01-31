@@ -4,7 +4,7 @@ import subprocess
 import settings
 import sys
 import playsound
-from Include.TTS.TTS.api import TTS
+from TTS.TTS.api import TTS
 import time
 
 
