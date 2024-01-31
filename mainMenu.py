@@ -1,16 +1,20 @@
 import sys
+import time
 sys.path.append("extraRepos")
 from speechRecognition import speechToText
 from youtubePlayer.youtubePlayer import playYTBMusic
 #from textToSpeech import speakToMe
 import settings
 from commands import commands
+from weather.weatherMain import weatherPreProcess
+
 
 def waitingWakeUp():
     name = settings.name
     print("Waiting for wake up call")
     #wakeUpCall = speechToText()
-    wakeUpCall = "hey " + name + " play extras gg"
+    wakeUpCall = "hey " + name + " whats the weather in Lisbon"
+
 
     if(wakeUpCall.find(name) == -1):
         waitingWakeUp()
@@ -28,6 +32,7 @@ def waitingWakeUp():
             waitingWakeUp()
 
     context = wakeUpCall.split(key)[1]
+
     #instruction found goes to the menu to execute it
     instructionMenu(instruction, context)
 
@@ -50,10 +55,35 @@ def listenCommand(phrase):
 
 
 def instructionMenu(instruction, context):
-        match instruction:
-            case 'play':
-                playYTBMusic(context)
+    match instruction:
+        case 'play':
+            playYTBMusic(context)
 
-            case _:
-                print("Command not found")
-                waitingWakeUp()
+        case 'loud':
+            if(settings.volume <= 90):
+                settings.volume += 10
+            else:
+                settings.volume = 100
+            
+            settings.saveSettings()
+
+        case 'quiet':
+            if(settings.volume >= 10):
+                settings.volume -= 10
+            else:
+                settings.volume = 0
+
+            settings.saveSettings()
+
+        case 'weather':
+            weatherPreProcess(context)
+
+        case _:
+            print("Command not found")
+            waitingWakeUp()
+
+    print("Back to sleep")
+    waitingWakeUp()
+
+if __name__ == '__main__':
+    waitingWakeUp()
