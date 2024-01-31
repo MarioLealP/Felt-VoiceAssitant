@@ -10,6 +10,5 @@ def speechToText():
             print(command)
             return command
     except Exception as e:
-        print(f"An error occurred: {e}")
         return ""
     
