@@ -11,8 +11,6 @@ from weather.weatherMain import weatherPreProcess
 
 def waitingWakeUp():
     name = settings.name.lower()
-    print(name)
-    print("Waiting for wake up call")
     wakeUpCall = speechToText()
     #wakeUpCall = "Felt, play GG extra"
 

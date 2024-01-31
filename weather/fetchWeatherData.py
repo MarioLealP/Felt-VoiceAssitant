@@ -18,8 +18,8 @@ def fetchCurrentWeather(location_key):
         data = response.json()
         print("Current Conditions:", data[0]['WeatherText'])
         print("Temperature:", data[0]['Temperature']['Metric']['Value'], data[0]['Temperature']['Metric']['Unit'])
-        message = "Current Conditions:", data[0]['WeatherText'] + "Temperature:", data[0]['Temperature']['Metric']['Value'], data[0]['Temperature']['Metric']['Unit']
-        #sendMessage(message)
+        message = "Current Conditions: " + data[0]['WeatherText'] + ", Temperature: " + str(data[0]['Temperature']['Metric']['Value']) + " " + data[0]['Temperature']['Metric']['Unit'] + " degrees"
+        message = message.replace(" C ", " ")
         textToSpeech(message)
 
     else:
@@ -34,7 +34,6 @@ def fetchWeatherForecast(location_key):
 
     # Make the API request
     response = requests.get(url)
-    #response = ""
 
     # Check if the request was successful (status code 200)
     if response.status_code == 200:
@@ -45,10 +44,8 @@ def fetchWeatherForecast(location_key):
         print("Day:", data['DailyForecasts'][0]['Day']['IconPhrase'])
         print("Night:", data['DailyForecasts'][0]['Night']['IconPhrase'])
 
-        message = "Weather Forecast:", data['Headline']['Text'] + "Minimum Temperature:", data['DailyForecasts'][0]['Temperature']['Minimum']['Value'], data['DailyForecasts'][0]['Temperature']['Minimum']['Unit'] + "\nMaximum Temperature:", data['DailyForecasts'][0]['Temperature']['Maximum']['Value'], data['DailyForecasts'][0]['Temperature']['Maximum']['Unit'] + "\nDay:", data['DailyForecasts'][0]['Day']['IconPhrase'] + "\nNight:", data['DailyForecasts'][0]['Night']['IconPhrase']
-        #sendMessage(message)
-        print("Message: ")
-        print(message)
+        message = "Weather Forecast: " + data['Headline']['Text'] + ", Minimum Temperature: " + str(data['DailyForecasts'][0]['Temperature']['Minimum']['Value']) + " " + data['DailyForecasts'][0]['Temperature']['Minimum']['Unit'] + " degrees ,Maximum Temperature: " + str(data['DailyForecasts'][0]['Temperature']['Maximum']['Value']) + " " + data['DailyForecasts'][0]['Temperature']['Maximum']['Unit'] + " degrees"
+        message = message.replace(" C ", " ")
         textToSpeech(message)
     else:
         print("Error:", response.status_code)

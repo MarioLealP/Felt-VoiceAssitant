@@ -50,11 +50,9 @@ def weatherForecast(context):
 
 
 def settingsCityCurrentWeather():
-    print('SC City:'+  settings.city)
     fetchCurrentWeather(searchLocationKey(settings.city))
 
 def settingsCityWeatherForecast():
-    print('SF City:'+  settings.city)
     fetchWeatherForecast(searchLocationKey(settings.city))
 
 
@@ -68,7 +66,6 @@ def otherCityCurrentWeather(context):
         instruction = context.split(" for ")
         city = instruction[1]
     
-    print('C City:'+  city)
     fetchCurrentWeather(searchLocationKey(city))
 
 def otherCityWeatherForecast(context):
@@ -97,7 +94,6 @@ def otherCityWeatherForecast(context):
     if(re.search('tomorrow', city)):
         city = city.split(" tomorrow")[0]
 
-    print('F City:'+  city)
     fetchWeatherForecast(searchLocationKey(city))
 
 def extract_city(context, pattern):
