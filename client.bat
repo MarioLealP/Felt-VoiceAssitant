@@ -1,2 +1,3 @@
-Scripts\activate.bat
-python ClientSide.py
+@echo off
+call Scripts\activate.bat
+python start.py
