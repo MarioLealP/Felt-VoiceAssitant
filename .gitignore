@@ -1,4 +1,6 @@
 apiKeys.py
+docs/protocol.md
+tempFiles/audio/musicFile.mp4
 
 # Created by https://www.toptal.com/developers/gitignore/api/python,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,visualstudiocode
@@ -198,3 +200,4 @@ pyrightconfig.json
 /extraRepos
 
 # End of https://www.toptal.com/developers/gitignore/api/python,visualstudiocode
+

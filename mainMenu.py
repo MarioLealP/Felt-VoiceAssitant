@@ -1,5 +1,6 @@
 import sys
 import time
+import re
 sys.path.append("extraRepos")
 from speechRecognition import speechToText
 from youtubePlayer.youtubePlayer import playYTBMusic
@@ -10,21 +11,23 @@ from weather.weatherMain import weatherPreProcess
 
 
 def waitingWakeUp():
-    name = settings.name
+    name = settings.name.lower()
+    print(name)
     print("Waiting for wake up call")
-    #wakeUpCall = speechToText()
-    wakeUpCall = "hey " + name + " whats the weather in Lisbon"
+    wakeUpCall = speechToText()
+    #wakeUpCall = "hey " + name + " whats the weather in Lisbon"
 
 
-    if(wakeUpCall.find(name) == -1):
+    if(not re.search(name, wakeUpCall)):
         waitingWakeUp()
+    
     
     instruction, key = listenCommand(wakeUpCall)
 
     attemptsAtListening = 0
     
     #Checks if instruction was found if not attempts to listen 3 times before going back to sleep
-    while(instruction == "Not Found"):
+    while(instruction == -1):
         attemptsAtListening += 1
         phrase = speechToText()
         listenCommand(phrase)
@@ -50,7 +53,7 @@ def listenCommand(phrase):
                 instruction = key
                 return instruction, key #returns the instruction based on the command key
 
-    return "Not Found"
+    return -1, "Not Found"
 
 
 

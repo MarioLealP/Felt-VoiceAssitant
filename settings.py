@@ -2,12 +2,17 @@ name = "Default"
 FFPlayVolume = 20
 city = "Batman"
 country = "Turkey"
+ServerIP = "localhost"
+ServerPort = 8888
 
 def loadSettings():
     global name
     global FFPlayVolume
     global city
     global country
+    global ServerIP
+    global ServerPort
+
     settings = open("settings.cfg", "r")
     for line in settings:
         if "Name:" in line:
@@ -18,6 +23,10 @@ def loadSettings():
             city = line.split(':')[1].strip()
         if 'Country:' in line:
             country = line.split(':')[1].strip()
+        if 'ServerIP:' in line:
+            ServerIP = line.split(':')[1].strip()
+        if 'ServerPort:' in line:
+            ServerPort = int(line.split(':')[1].strip())
 
     settings.close()
     
@@ -27,6 +36,11 @@ def loadSettings():
 def saveSettings():    
         global name
         global FFPlayVolume
+        global city
+        global country
+        global ServerIP
+        global ServerPort
+
         with open("settings.cfg", "r") as settings:
             lines = settings.readlines()
 
@@ -40,6 +54,10 @@ def saveSettings():
                     settings.write("City: " + city)
                 elif "Country:" in line:
                     settings.write("Country: " + country)
+                elif "ServerIP:" in line:
+                    settings.write("ServerIP: " + ServerIP)
+                elif "ServerPort:" in line:
+                    settings.write("ServerPort: " + ServerPort)
                 else:
                     settings.write(line)
 

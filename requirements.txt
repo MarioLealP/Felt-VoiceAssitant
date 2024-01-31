@@ -1,0 +1,5 @@
+pip install speechRecognition
+pip install PyAudio
+pip install spotipy
+pip install pytube
+pip install --upgrade pocketsphinx

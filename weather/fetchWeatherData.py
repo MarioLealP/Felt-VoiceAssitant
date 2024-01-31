@@ -1,5 +1,6 @@
 import requests
 from apiKeys import accuWeatherAPI
+from server.client.clientCommunication import sendMessage
 
 def fetchCurrentWeather(location_key):
 
@@ -20,6 +21,8 @@ def fetchCurrentWeather(location_key):
         data = response.json()
         print("Current Conditions:", data[0]['WeatherText'])
         print("Temperature:", data[0]['Temperature']['Metric']['Value'], data[0]['Temperature']['Metric']['Unit'])
+        message = "Current Conditions:", data[0]['WeatherText'] + "\nTemperature:", data[0]['Temperature']['Metric']['Value'], data[0]['Temperature']['Metric']['Unit']
+        sendMessage(message)
     else:
         print("Error:", response.status_code)
 
@@ -45,5 +48,8 @@ def fetchWeatherForecast(location_key):
         print("Maximum Temperature:", data['DailyForecasts'][0]['Temperature']['Maximum']['Value'], data['DailyForecasts'][0]['Temperature']['Maximum']['Unit'])
         print("Day:", data['DailyForecasts'][0]['Day']['IconPhrase'])
         print("Night:", data['DailyForecasts'][0]['Night']['IconPhrase'])
+
+        message = "Weather Forecast:", data['Headline']['Text'] + "\nMinimum Temperature:", data['DailyForecasts'][0]['Temperature']['Minimum']['Value'], data['DailyForecasts'][0]['Temperature']['Minimum']['Unit'] + "\nMaximum Temperature:", data['DailyForecasts'][0]['Temperature']['Maximum']['Value'], data['DailyForecasts'][0]['Temperature']['Maximum']['Unit'] + "\nDay:", data['DailyForecasts'][0]['Day']['IconPhrase'] + "\nNight:", data['DailyForecasts'][0]['Night']['IconPhrase']
+        sendMessage(message)
     else:
         print("Error:", response.status_code)

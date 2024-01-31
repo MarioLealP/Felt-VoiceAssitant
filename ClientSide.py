@@ -1,11 +1,8 @@
 from mainMenu import waitingWakeUp
-from settings import name
 import settings
-from speechRecognition import speechToText
-import spotipy
-from spotipy.oauth2 import SpotifyOAuth
-
-import weather.weatherMain
+import time
+from server.client.clientConnection import start_client
+from server.client.clientCommunication import sendMessage, receiveMessage
 
 def startUp():
 
@@ -17,10 +14,14 @@ def startUp():
     print("Current City is: " + settings.city)
     print("Current Country is: " + settings.country)
 
-    #weather.weatherMain.settingsCityWeatherForecast()
-    #weather.weatherMain.weatherPreProcess("Whats the weather like in London tomorrow?")
+    start_client()
+    sendMessage("Can you hear me?")
+    message = receiveMessage()
+    print(message)
 
-    waitingWakeUp()
+    #waitingWakeUp()
+    time.sleep(60)
+    #clientSocket.close()
 
 if __name__ == '__main__':
     startUp()
