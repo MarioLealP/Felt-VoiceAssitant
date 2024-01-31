@@ -205,7 +205,6 @@ pyrightconfig.json
 .ionide
 
 /models
-/extraRepos
 
 # End of https://www.toptal.com/developers/gitignore/api/python,visualstudiocode
 
