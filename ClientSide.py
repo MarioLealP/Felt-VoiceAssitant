@@ -4,6 +4,7 @@ import time
 from server.client.clientConnection import start_client
 from server.client.clientCommunication import sendMessage, receiveMessage
 from textToSpeech import textToSpeech
+import os
 
 
 def startUp():
@@ -15,6 +16,8 @@ def startUp():
     print("Current FFPlayVolume is: " + str(settings.FFPlayVolume))
     print("Current City is: " + settings.city)
     print("Current Country is: " + settings.country)
+
+    os.makedirs('tempFiles/audio/', exist_ok=True)
 
     #textToSpeech("Hello, my name is " + settings.name)
     #message = "Current Conditions: Clear, Temperature: 13.9 C"
