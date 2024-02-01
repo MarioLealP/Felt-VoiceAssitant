@@ -1,4 +1,4 @@
-# Felt-VoiceAssitance
+# Felt-VoiceAssitant
 
 1st run use setup.bat
 
