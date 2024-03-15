@@ -1,5 +1,5 @@
 import requests
-from apiKeys import accuWeatherAPI
+from Utils.ApiKeys import accuWeatherAPI
 
 def searchLocationKey(city_name):
 

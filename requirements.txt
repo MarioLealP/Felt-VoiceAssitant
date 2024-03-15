@@ -124,5 +124,8 @@ transformers
 tensorboard
 spacy
 trainer
+sentencepiece
+ffmpeg-python
+vosk
 # Extras\vs_BuildTools.exe --norestart --passive --downloadThenInstall --includeRecommended --add Microsoft.VisualStudio.Workload.NativeDesktop --add Microsoft.VisualStudio.Workload.VCTools --add Microsoft.VisualStudio.Workload.MSBuildTools
 

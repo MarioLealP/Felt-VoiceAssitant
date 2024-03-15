@@ -1,9 +1,9 @@
 import socket
 import os
 import re
-import server.protocolCodes as pC
-import server.backend.socket as s
-from server.backend.backEndCommunication import receiveMessage, sendMessage
+import Utils.ProtocolCodes as pC
+import Server.Backend.SocketBE as s
+from Server.Backend.BackEndCommunication import receiveMessage, sendMessage
 
 def start_server():
     # Create a TCP/IP socket

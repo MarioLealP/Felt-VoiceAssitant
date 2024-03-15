@@ -1,4 +1,4 @@
-import server.backend.socket as s
+import Server.Backend.SocketBE as s
 
 def receiveMessage():
     data = s.clientSocket.recv(1024)

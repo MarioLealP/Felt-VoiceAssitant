@@ -1,9 +1,9 @@
 import os
-from speechRecognition import speechToText
-from youtubePlayer.youtubeVideoSearch import search_youtube_api  # Assuming this is a module containing the modified search_youtube function
+from Utils.STT.SpeechRecognition import speechToText
+from YoutubePlayer.YoutubeVideoSearch import search_youtube_api  # Assuming this is a module containing the modified search_youtube function
 from pytube import YouTube
 import subprocess
-import settings
+import Settings.Settings
 import multiprocessing
 import time
 import sys
@@ -35,7 +35,7 @@ def ffplayProcess(audio_file_path):
         startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
 
     # Run ffplay with redirected output
-    subprocess.run([ffplay_path, '-volume', str(settings.FFPlayVolume), audio_file_path], stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, startupinfo=startupinfo)
+    subprocess.run([ffplay_path, '-volume', str(Settings.volumeFFPlay), audio_file_path], stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, startupinfo=startupinfo)
 
 
     # Optional: Delete the downloaded audio and WebM files

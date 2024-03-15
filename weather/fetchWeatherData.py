@@ -1,7 +1,6 @@
 import requests
-from apiKeys import accuWeatherAPI
-from server.client.clientCommunication import sendMessage
-from textToSpeech import textToSpeech
+from Utils.ApiKeys import accuWeatherAPI
+from Utils.TTS.TextToSpeech import textToSpeech
 
 def fetchCurrentWeather(location_key):
 

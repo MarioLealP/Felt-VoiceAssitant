@@ -1,6 +1,6 @@
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
-from apiKeys import spotifyID, spotifySecret, spoitfyURL
+from Utils.ApiKeys import spotifyID, spotifySecret, spoitfyURL
 
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=spotifyID,
                                                client_secret=spotifySecret,

@@ -1,7 +1,7 @@
-import settings
+import Settings.Settings
 import re
-from weather.fetchLocationKey import searchLocationKey
-from weather.fetchWeatherData import fetchCurrentWeather, fetchWeatherForecast
+from Weather.FetchLocationKey import searchLocationKey
+from Weather.FetchWeatherData import fetchCurrentWeather, fetchWeatherForecast
 
 def weatherPreProcess(context):
     if(context.find("tomorrow") != -1 or context.find("forecast") != -1):
@@ -50,10 +50,10 @@ def weatherForecast(context):
 
 
 def settingsCityCurrentWeather():
-    fetchCurrentWeather(searchLocationKey(settings.city))
+    fetchCurrentWeather(searchLocationKey(Settings.city))
 
 def settingsCityWeatherForecast():
-    fetchWeatherForecast(searchLocationKey(settings.city))
+    fetchWeatherForecast(searchLocationKey(Settings.city))
 
 
 def otherCityCurrentWeather(context):

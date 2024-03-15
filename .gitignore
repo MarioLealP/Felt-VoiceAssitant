@@ -1,3 +1,4 @@
+pyvenv.cfg
 apiKeys.py
 docs/protocol.md
 tempFiles/audio/musicFile.mp4
@@ -143,6 +144,8 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+pyvenv.cfg
+
 
 # Spyder project settings
 .spyderproject
@@ -207,5 +210,6 @@ pyrightconfig.json
 /models
 
 # End of https://www.toptal.com/developers/gitignore/api/python,visualstudiocode
+
 
 pyvenv.cfg

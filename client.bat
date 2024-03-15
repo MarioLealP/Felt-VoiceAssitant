@@ -1,3 +1,3 @@
 @echo off
 call Scripts\activate.bat
-python start.py
+python client\Client.py

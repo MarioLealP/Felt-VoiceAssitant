@@ -1,0 +1,176 @@
+@startuml
+
+skinparam linetype ortho
+
+skinparam nodesep 30
+skinparam ranksep 30
+
+class Client{
+	- Socket connectToServer()
+	- boolean authorize()
+	- String loopWaitingForWakeUpWord()
+}
+
+class SoundInput {
+	+ void listenWakeUpWord()
+	+ String speechToText()
+}
+
+class Chat{
+	+ void receiveText()
+	+ void sendText()
+
+}
+
+class Commands{
+	+ void hearCommand()
+}
+
+
+ServerUtils <-- SoundInput
+SoundInput <-- Chat
+SoundInput <-- Commands
+
+class Weather
+class AccuWeatherAPI {
+	+ String sendWeatherData()
+	- void fetchLocation()
+	- void fetchWeatherData()
+	
+}
+
+Commands <-- Weather
+Weather <-- AccuWeatherAPI
+AccuWeatherAPI --> SoundOutput
+
+class Notes{
+	+ ArrayList<String> ListNotes()
+	+ void addNote()
+	+ void deleteNote()
+	+ File selectNote()
+}
+
+class WriteNote{
+	+ void appendToNote(File)
+}
+class ReadNote{
+	+ void readNote()
+}
+
+Commands <-- Notes
+Notes <-- WriteNote
+WriteNote --> SoundInput
+Notes <-- ReadNote
+ReadNote --> SoundOutput
+
+
+class MusicPlayer{
+	+ void ffplay(File)
+	+ void raiseVolume()
+	+ void lowerVolume()
+	+ void nextSong()
+	+ void previousSong()
+	+ void pause()
+	+ void resume()
+}
+class SpotifyAPI{
+	+ void search()
+	+ void addSongToQueue()
+	+ void clearQueue()
+}
+
+class YoutubeAPI{
+	+ void searchIndividual()
+	- File download()
+	- void playFile(File)
+	+ void searchPlaylist()
+	+ void playPlaylist()
+	- void addToQueue()
+	+ void clearQueue()
+}
+
+class ConvertMp4ToSound {
+	+ void ffmpegMp4toWav()
+}
+
+Commands --> YoutubeAPI
+YoutubeAPI --> MusicPlayer
+Commands --> MusicPlayer
+YoutubeAPI <-- SoundInput
+YoutubeAPI <-- ConvertMp4ToSound
+
+Commands --> SpotifyAPI
+
+class Vosk{
+	+ String speechToText()
+}
+
+SoundInput <-- Vosk
+
+class ServerUtils{
+	+ String receivePacket()
+	+ sendPacket(String)
+}
+
+class Server{
+	- Socket connectNewClient()
+	- boolean authorizeClient()
+
+}
+
+ServerUtils -> Server
+ServerUtils -> Client
+
+Server <-- Weather
+Server <-- Notes
+Server <-- MusicPlayer
+
+class Output{
+	- ImageOutput imageOutput
+	- SoundOutput soundOutput
+}
+
+class SoundOutput{
+}
+
+class ImageOutput{
+}
+
+Output *-- SoundOutput
+Output *-- ImageOutput
+ServerUtils <-- Output
+Server <-> Client
+
+class textToExpression{
+}
+
+class MotionMaker{
+}  
+
+ImageOutput <-- MotionMaker
+MotionMaker <-- textToExpression
+
+class Settings{
+	+ void changeSettings()
+	+ void saveSettings()
+	+ void loadSettings()
+}
+
+class Settings.cfg{
+	+Name
+	+Volume
+	+City
+	+ServerIP:Port
+}
+
+Settings <-- Settings.cfg
+ServerUtils <-- Settings
+
+ApiKeys{
+	+ String AccuWeatherAPIKey
+	+ String SpotifyAPIKey
+	+ String YoutubeAPIKey
+}
+
+ServerUtils <-- ApiKeys
+@enduml
