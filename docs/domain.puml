@@ -2,8 +2,8 @@
 
 skinparam linetype ortho
 
-skinparam nodesep 30
-skinparam ranksep 30
+skinparam nodesep 35
+skinparam ranksep 35
 
 class Client{
 	- Socket connectToServer()
@@ -166,7 +166,7 @@ class Settings.cfg{
 Settings <-- Settings.cfg
 ServerUtils <-- Settings
 
-ApiKeys{
+class ApiKeys{
 	+ String AccuWeatherAPIKey
 	+ String SpotifyAPIKey
 	+ String YoutubeAPIKey
